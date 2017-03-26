@@ -1,0 +1,47 @@
+Gmail:
+
+package basic;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Gmail {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://gmail.com");
+		WebElement usernameTextBox= driver.findElement(By.id("Email"));
+		usernameTextBox.sendKeys("shobha.qa18@gmail.com");
+		WebElement textNext = driver.findElement(By.id("next"));
+		textNext.click();
+		Thread.sleep(3000);
+		WebElement userPassWord = driver.findElement(By.id("Passwd"));
+		userPassWord.sendKeys("surajnidhi");
+		WebElement signIn = driver.findElement(By.id("signIn"));
+		signIn.click();
+		Thread.sleep(3000);
+		WebElement compose = driver.findElement(By.xpath("//*[@gh='cm']"));
+		compose.click();
+		//WebElement newMessage = driver.findElement(By.xpath("/html/body/div[14]/div/div/div/div[1]/div[3]/div[1]/div[1]/div/div/div/div[2]/div/div[2]/div/div"));
+		//newMessage.isDisplayed();
+		WebElement toEmail = driver.findElement(By.xpath("//*[@name = 'to']"));
+		toEmail.sendKeys("k.r.shobha@gmail.com");
+		WebElement subJect = driver.findElement(By.xpath("//input[@name = 'subjectbox']"));
+		subJect.sendKeys("This is Automated mail");
+		WebElement message = driver.findElement(By.xpath("//*[@role = 'textbox']"));
+		message.sendKeys("Hello, This is Shobha");
+		Thread.sleep(3000);
+		WebElement send = driver.findElement(By.xpath("//tbody/tr/td[1]/div/div[text()='Send']"));
+		Thread.sleep(3000);
+		send.click();
+//		WebElement link = driver.findElement(By.id("link_vsm"));
+//		link.isDisplayed();
+		
+
+	}
+
+}
