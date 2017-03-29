@@ -1,0 +1,27 @@
+package basic;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DeleteReport1 {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//input[@ng-model='enablePublishedOn']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@ng-model='ciSearchKey']")).sendKeys("786");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@title='Delete']")).click();
+		//driver.findElement(By.id("ngdialog1-aria-describedby")
+		driver.findElement(By.xpath("//button[text()='Delete']")).click();
+	}
+
+}
