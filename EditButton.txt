@@ -1,0 +1,32 @@
+package basic;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class EditButton {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//input[@ng-model='enablePublishedOn']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@ng-model='ciSearchKey']")).sendKeys("123");
+		Thread.sleep(2000);
+		String edit = driver.findElement(By.xpath("//a[@title='Edit']")).getText();
+		if(edit.equals("Edit"))
+		{System.out.println("Pass");}
+		
+		else{System.out.println("Fail");}
+			
+
+	}
+
+}
