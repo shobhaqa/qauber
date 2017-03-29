@@ -1,0 +1,67 @@
+package basic;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class EditReport1 {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//input[@ng-model='enablePublishedOn']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//input[@ng-model='ciSearchKey']")).sendKeys("123");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@title='Edit']")).click();
+		Thread.sleep(2000);
+		List<WebElement> radioButtonLabels = driver.findElements(By.xpath("//fieldset/*[@class='ng-scope']//label"));
+		for (int i = 0; i < radioButtonLabels.size(); i++)
+		{
+			WebElement radioButtomLabel = radioButtonLabels.get(i);
+			String text = radioButtomLabel.getText();
+			if (text.equals("HOD")) 
+			{
+				WebElement radioButton = radioButtomLabel.findElement(By.xpath("span"));
+				radioButton.click();
+			}
+		}
+		 List<WebElement> nextButtons = driver.findElements(By.xpath("//a[text()='Next']"));
+		 for(int i=0;i<nextButtons.size();i++)
+			{
+				 WebElement nextButton = nextButtons.get(i);
+				 if(nextButton.isDisplayed())
+				 {
+				 nextButton.click();
+				 break;
+
+				 }
+	}
+		 Thread.sleep(2000);
+		 WebElement LN = driver.findElement(By.xpath("//input[@name='lastName']"));
+		 LN.clear();
+		 LN.sendKeys("ooo");
+		 
+		 
+		 /*if(LN.equals("ooo"))
+		 {System.out.println("User is able to edit a report");}
+		 else{System.out.println("User is not able to edit a report");}*/
+			 
+	}
+
+}
+
+
+	
+	
+
+
