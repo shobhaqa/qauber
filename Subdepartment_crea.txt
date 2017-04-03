@@ -1,0 +1,51 @@
+package basic;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Subdepartment_crea {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@ng-href='#/app/entities']")).click();
+		Thread.sleep(2000);
+	    String entity = "cool";
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//a[text()='"+entity+"']")).click();
+        driver.findElement(By.xpath("//button[text()='Add Department']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//input[@ng-model='$depCtrl.depName']")).sendKeys("@#$12adb");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[text()='Add']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//a[@title='Users']")).click();
+        Thread.sleep(2000);
+        
+        driver.findElement(By.xpath("//a[@ng-href='#/app/entities']")).click();
+        driver.findElement(By.xpath("//a[text()='"+entity+"']")).click();
+        List<WebElement> subds = driver.findElements(By.xpath("html/body/div[2]/section/div/div/div/div"));
+        for(int i=0; i<subds.size(); i++)
+        {WebElement subd = subds.get(i);
+        System.out.println(subd.getText());
+        if(subd.getText().equals("@#$12adb"))
+        {System.out.println("Department has been added");}
+        else{System.out.println("Department not added");}
+        
+        }
+
+	}
+
+}
