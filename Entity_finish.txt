@@ -1,0 +1,38 @@
+package basic;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Entity_finish {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//span[text()='Entities']")).click();
+		Thread.sleep(2000);
+		String entity = "sho";
+		
+		driver.findElement(By.xpath("//a[text()='"+entity+"']")).click();
+		Thread.sleep(2000);
+	WebElement Entity = driver.findElement(By.xpath("//div[@ng-show='$ctrl.isCurrentStep(4)']"));
+	
+	WebElement Entity1 = driver.findElement(By.xpath("//div[@ ng-show='$ctrl.isCurrentStep(2)']"));
+	Thread.sleep(2000);
+	if(Entity.isDisplayed())
+	{ System.out.println("Subdepartment can't be created");}
+	else if(Entity1.isDisplayed())
+	{System.out.println("Subdepartment can't be created");}
+	else{System.out.println("Subdepartment can be created");
+	}
+	}
+
+}
