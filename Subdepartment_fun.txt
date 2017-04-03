@@ -1,0 +1,34 @@
+package basic;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Subdepartment_fun {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("shobha12345@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		driver.findElement(By.xpath("//button[text()='Login']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@ng-href='#/app/entities']")).click();
+		Thread.sleep(2000);
+	    String entity = "cool";
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//a[text()='"+entity+"']")).click();
+        driver.findElement(By.xpath("//button[text()='Add Department']")).click();
+        Thread.sleep(2000);
+        WebElement Sub = driver.findElement(By.xpath("//form[@name='$depCtrl.form']"));
+        if(Sub.isDisplayed())
+        { System.out.println("Test case Pass");}
+        else{System.out.println("Test case Fail");}
+	}
+}
