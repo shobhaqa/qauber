@@ -1,0 +1,38 @@
+package basic;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Regular_report_entity {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver = new ChromeDriver();
+		//driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		driver.get("http://testwave.qabidder.net/");
+		Thread.sleep(2000);
+		driver.findElement(By.id("exampleInputEmail1")).sendKeys("red1@mailinator.com");
+		driver.findElement(By.id("exampleInputPassword1")).sendKeys("shobha123");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+        driver.findElement(By.xpath("//a[@ title='Reports']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//input[@ng-model='enablePublishedOn']")).click();
+        WebElement kannada = driver.findElement(By.xpath("//div[@class='col-sm-3']/span[text()='kannada']"));
+        Thread.sleep(2000);
+        WebElement mnb = driver.findElement(By.xpath("//div[@class='col-sm-3']/span[text()='mnb']"));
+        if(kannada.isDisplayed())
+        /*{System.out.println("done");}
+        else if (mnb.isDisplayed())
+        {System.out.println("done");}
+        else{System.out.println("Fail");}*/
+        	
+        }
+
+}
